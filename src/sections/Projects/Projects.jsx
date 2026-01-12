@@ -2,27 +2,31 @@
 import "./Projects.scss";
 import Container from "../../components/Container/Container";
 
+import stepByStepImg from "../../assets/images/stepbystepclub.png";
+import rikakumaImg from "../../assets/images/rikakuma.png";
+import ksnapImg from "../../assets/images/ksnapstudio.png";
+
 const PROJECTS = [
   {
     title: "Step By Step Club",
     desc: "Website + booking flow for a kids fitness & events business.",
     tags: ["Website", "Booking"],
-    href: "#contact",
-    image: "/projects/stepbystep.jpg",
+    href: "https://stepbystepclub.ca",
+    image: stepByStepImg,
   },
   {
     title: "Rikakuma Shop",
     desc: "Product pages + cart experience for a small brand.",
     tags: ["Ecommerce", "UI"],
-    href: "#contact",
-    image: "/projects/rikakuma.jpg",
+    href: "https://rikakuma.netlify.app",
+    image: rikakumaImg,
   },
   {
     title: "K-Snap Studio",
     desc: "Portfolio site to showcase photography and drive inquiries.",
     tags: ["Portfolio", "Brand"],
-    href: "#contact",
-    image: "/projects/ksnap.jpg",
+    href: "https://ksnapstudio.ca",
+    image: ksnapImg,
   },
 ];
 
@@ -40,7 +44,13 @@ export default function Projects() {
 
         <div className="projects__grid">
           {PROJECTS.map((p) => (
-            <a key={p.title} className="projects__card" href={p.href}>
+            <a
+              key={p.title}
+              className="projects__card"
+              href={p.href}
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="projects__media" aria-hidden="true">
                 <img className="projects__img" src={p.image} alt="" />
                 <div className="projects__mediaOverlay" />
