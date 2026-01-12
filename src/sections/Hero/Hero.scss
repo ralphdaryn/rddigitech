@@ -7,7 +7,6 @@
   padding: 72px 0;
   color: #fff;
 
-  /* background image */
   &__image {
     position: absolute;
     inset: 0;
@@ -20,7 +19,6 @@
     transform: scale(1.02);
   }
 
-  /* overlay like your Next gradient */
   &__overlay {
     position: absolute;
     inset: 0;
@@ -34,13 +32,15 @@
         rgba(21, 183, 232, 0.12),
         transparent 60%
       ),
-      linear-gradient(180deg, rgba(14, 32, 52, 0.52), rgba(14, 32, 52, 0.9));
+      linear-gradient(
+        180deg,
+        rgba(14, 32, 52, 0.52),
+        rgba(14, 32, 52, 0.9)
+      );
   }
 
-  /* glow accents */
   &__glow {
     position: absolute;
-    inset: auto;
     width: 520px;
     height: 520px;
     border-radius: 50%;
@@ -67,7 +67,6 @@
     text-align: center;
   }
 
-  /* desktop aligns left, but mobile is first */
   @media (min-width: 768px) {
     padding: 96px 0;
 
@@ -80,7 +79,7 @@
     letter-spacing: 0.22em;
     font-size: 12px;
     opacity: 0.85;
-    margin: 0 0 14px 0;
+    margin-bottom: 14px;
   }
 
   &__copy {
@@ -93,24 +92,10 @@
   }
 
   &__title {
-    font-size: clamp(34px, 8.2vw, 58px);
+    font-size: clamp(34px, 8vw, 58px);
     line-height: 1.05;
-    margin: 0 0 14px 0;
+    margin-bottom: 14px;
     letter-spacing: -0.02em;
-  }
-
-  &__highlight {
-    position: relative;
-    display: inline-block;
-    padding: 0 0.12em;
-    border-radius: 10px;
-    background: rgba(21, 183, 232, 0.18);
-    box-shadow: 0 0 0 1px rgba(21, 183, 232, 0.18);
-
-    &--soft {
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
-    }
   }
 
   &__sub {
@@ -129,7 +114,6 @@
     }
   }
 
-  /* new points list */
   &__points {
     list-style: none;
     padding: 0;
@@ -139,7 +123,7 @@
     justify-content: center;
 
     @media (min-width: 768px) {
-      justify-content: start;
+      justify-content: flex-start;
     }
   }
 
@@ -157,7 +141,7 @@
     border-radius: 999px;
     background: $electric;
     box-shadow: 0 0 0 4px rgba(21, 183, 232, 0.12);
-    flex: 0 0 auto;
+    flex-shrink: 0;
   }
 
   &__ctas {
@@ -173,16 +157,16 @@
   }
 
   &__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     height: 44px;
     padding: 0 16px;
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
-    transition: 0.2s ease;
     letter-spacing: 0.01em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
 
     &--primary {
       background: $electric;
@@ -201,31 +185,7 @@
 
       &:hover {
         background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.22);
       }
-    }
-  }
-
-  &__badges {
-    list-style: none;
-    padding: 0;
-    margin: 22px 0 0 0;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    @media (min-width: 768px) {
-      justify-content: flex-start;
-    }
-
-    li {
-      font-size: 13px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(8px);
     }
   }
 }
