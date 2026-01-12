@@ -1,21 +1,10 @@
-// Services.scss
+// Reviews.scss
 @use "../../styles/variables" as *;
 
-.services {
-  position: relative;
+.reviews {
   padding: 72px 0;
   background: #fff;
   color: #0e2034;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: rgba(14, 32, 52, 0.08);
-  }
 
   &__inner {
     position: relative;
@@ -50,13 +39,14 @@
     opacity: 0.85;
   }
 
-  /* Cards */
+  /* Grid */
   &__grid {
+    margin-top: 18px;
     display: grid;
     gap: 14px;
-    margin-top: 18px;
   }
 
+  /* Card */
   &__card {
     padding: 18px;
     border-radius: 18px;
@@ -65,55 +55,18 @@
     box-shadow: 0 10px 30px rgba(14, 32, 52, 0.06);
   }
 
-  &__cardTitle {
-    font-size: 18px;
-    margin: 0 0 6px 0;
-    letter-spacing: -0.01em;
-  }
-
-  &__cardText {
-    font-size: 14px;
+  &__quote {
+    font-size: 15px;
     line-height: 1.6;
-    margin: 0;
-    opacity: 0.85;
-  }
-
-  /* CTA */
-  &__cta {
-    margin-top: 22px;
-    padding: 16px;
-    border-radius: 18px;
-    background: rgba(21, 183, 232, 0.08);
-    border: 1px solid rgba(21, 183, 232, 0.18);
-    display: grid;
-    gap: 12px;
-    justify-items: center;
-    text-align: center;
-  }
-
-  &__ctaText {
-    font-size: 14px;
-    margin: 0;
+    margin: 0 0 12px 0;
     opacity: 0.9;
   }
 
-  &__btn {
-    height: 44px;
-    padding: 0 16px;
-    border-radius: 12px;
-    background: $electric;
-    color: #0e2034;
-    text-decoration: none;
-    font-weight: 800;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.2s ease;
-
-    &:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-    }
+  &__author {
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.7;
+    margin: 0;
   }
 
   /* Tablet */
@@ -133,13 +86,6 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
     }
-
-    &__cta {
-      grid-template-columns: 1fr auto;
-      justify-items: start;
-      text-align: left;
-      align-items: center;
-    }
   }
 
   /* Desktop */
@@ -153,12 +99,8 @@
       padding: 20px;
     }
 
-    &__cardTitle {
-      font-size: 19px;
-    }
-
-    &__cardText {
-      font-size: 15px;
+    &__quote {
+      font-size: 16px;
     }
   }
 }

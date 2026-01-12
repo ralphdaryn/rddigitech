@@ -1,3 +1,131 @@
+// Contact.scss
+@use "../../styles/variables" as *;
+
 .contact {
   padding: 72px 0;
+  background: #fff;
+  color: #0e2034;
+
+  &__inner {
+    position: relative;
+  }
+
+  /* Header */
+  &__header {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  &__eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    opacity: 0.75;
+    margin: 0 0 10px 0;
+  }
+
+  &__title {
+    font-size: clamp(26px, 6vw, 38px);
+    line-height: 1.15;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.02em;
+  }
+
+  &__sub {
+    max-width: 60ch;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  /* Form */
+  &__form {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(14, 32, 52, 0.03);
+    border: 1px solid rgba(14, 32, 52, 0.08);
+    box-shadow: 0 10px 30px rgba(14, 32, 52, 0.06);
+    display: grid;
+    gap: 14px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__label {
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  &__input,
+  &__textarea {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(14, 32, 52, 0.18);
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+    color: #0e2034;
+    resize: none;
+    transition: 0.2s ease;
+
+    &::placeholder {
+      opacity: 0.5;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $electric;
+      box-shadow: 0 0 0 3px rgba(21, 183, 232, 0.18);
+    }
+  }
+
+  &__btn {
+    margin-top: 6px;
+    height: 44px;
+    border-radius: 12px;
+    border: none;
+    background: $electric;
+    color: #0e2034;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    padding: 92px 0;
+
+    &__header {
+      text-align: left;
+    }
+
+    &__sub {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    &__form {
+      max-width: 560px;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    &__form {
+      padding: 24px;
+    }
+  }
 }
