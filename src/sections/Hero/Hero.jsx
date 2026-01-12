@@ -6,12 +6,7 @@ export default function Hero() {
   return (
     <section className="hero" id="home">
       {/* Background image */}
-      <img
-        className="hero__image"
-        src="/hero.png"
-        alt=""
-        aria-hidden="true"
-      />
+      <img className="hero__image" src="/hero.png" alt="" aria-hidden="true" />
       <div className="hero__overlay" aria-hidden="true" />
 
       {/* subtle glow accents */}
@@ -25,8 +20,10 @@ export default function Hero() {
           <h1 className="hero__title">Websites. Analytics. Automation.</h1>
 
           <p className="hero__sub">
-            Get more inquiries, understand what’s working, and save time with
-            simple systems built for small businesses.
+            <p className="hero__sub">
+              We help businesses get more leads and save time with simple
+              systems.
+            </p>
           </p>
 
           <ul className="hero__points" aria-label="What we do">
