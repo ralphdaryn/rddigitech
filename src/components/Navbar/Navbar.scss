@@ -1,41 +1,41 @@
+// Navbar.scss
 @use "../../styles/variables" as *;
 
 .nav {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(14, 32, 52, 0.7);
+  background: rgba(14, 32, 52, 0.75);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   &__inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__logo {
-    font-weight: 700;
-    letter-spacing: 0.06em;
     color: #fff;
     text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.06em;
   }
 
   /* Desktop links */
   &__links {
     display: none;
-    gap: 16px;
+    align-items: center;
+    gap: 18px;
 
     a {
-      color: #fff;
+      color: rgba(255, 255, 255, 0.9);
       text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 10px;
-      transition: 0.2s ease;
+      font-weight: 600;
+      font-size: 14px;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.08);
         color: $electric;
       }
     }
@@ -45,16 +45,35 @@
     }
   }
 
-  /* Burger (mobile only) */
-  &__burger {
+  /* Desktop CTA */
+  &__cta {
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 12px;
+    background: $electric;
+    color: #0e2034 !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    font-weight: 800;
+    transition: 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+  }
+
+  /* Burger */
+  &__burger {
     width: 44px;
     height: 44px;
     border: 0;
     background: transparent;
     color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 
     @media (min-width: 768px) {
@@ -62,16 +81,15 @@
     }
   }
 
-  /* Mobile dropdown */
+  /* Mobile menu */
   &__mobile {
     position: fixed;
+    top: 64px;
     left: 0;
     right: 0;
-    top: 64px;
     background: rgba(14, 32, 52, 0.95);
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
@@ -90,8 +108,8 @@
 
   &__mobile-list {
     list-style: none;
-    padding: 12px 0;
     margin: 0;
+    padding: 12px 0;
     display: grid;
     gap: 6px;
 
@@ -99,13 +117,19 @@
       display: block;
       padding: 12px;
       border-radius: 10px;
-      color: #fff;
+      color: rgba(255, 255, 255, 0.95);
       text-decoration: none;
+      font-weight: 600;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.08);
         color: $electric;
+        background: rgba(255, 255, 255, 0.06);
       }
     }
+  }
+
+  &__mobile-cta {
+    background: rgba(21, 183, 232, 0.12);
+    border: 1px solid rgba(21, 183, 232, 0.22);
   }
 }

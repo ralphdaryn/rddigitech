@@ -1,3 +1,4 @@
+// Navbar.jsx
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import "./Navbar.scss";
@@ -5,7 +6,7 @@ import Container from "../Container/Container";
 
 const NAV = [
   { href: "#services", label: "Services" },
-  { href: "#contact", label: "Contact" },
+  { href: "#work", label: "Work" },
 ];
 
 export default function Navbar() {
@@ -16,21 +17,27 @@ export default function Navbar() {
     return () => document.documentElement.classList.remove("overflow-hidden");
   }, [open]);
 
+  const close = () => setOpen(false);
+
   return (
     <header className="nav">
       <Container>
         <div className="nav__inner">
-          <a className="nav__logo" href="#top" onClick={() => setOpen(false)}>
+          <a className="nav__logo" href="#home" onClick={close}>
             RD Digitech
           </a>
 
-          {/* Desktop links */}
+          {/* Desktop */}
           <nav className="nav__links" aria-label="Primary">
             {NAV.map((item) => (
               <a key={item.href} href={item.href}>
                 {item.label}
               </a>
             ))}
+
+            <a className="nav__cta" href="#contact">
+              Contact
+            </a>
           </nav>
 
           {/* Mobile burger */}
@@ -57,11 +64,16 @@ export default function Navbar() {
           <ul className="nav__mobile-list">
             {NAV.map((item) => (
               <li key={item.href}>
-                <a href={item.href} onClick={() => setOpen(false)}>
+                <a href={item.href} onClick={close}>
                   {item.label}
                 </a>
               </li>
             ))}
+            <li>
+              <a className="nav__mobile-cta" href="#contact" onClick={close}>
+                Contact
+              </a>
+            </li>
           </ul>
         </Container>
       </nav>
