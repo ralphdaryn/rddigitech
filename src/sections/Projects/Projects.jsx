@@ -9,22 +9,22 @@ import ksnapImg from "../../assets/images/ksnapstudio.png";
 const PROJECTS = [
   {
     title: "Step By Step Club",
-    desc: "Website + booking flow for a kids fitness & events business.",
-    tags: ["Website", "Booking"],
+    desc: "Website with booking and event registration for a kids & fitness business.",
+    tags: ["Booking Service", "Waiver Signature", "Contact Forms"],
     href: "https://stepbystepclub.ca",
     image: stepByStepImg,
   },
   {
     title: "Rikakuma Shop",
-    desc: "Product pages + cart experience for a small brand.",
-    tags: ["Ecommerce", "UI"],
+    desc: "Ecommerce website selling custom-designed products online.",
+    tags: ["E-commerce", "Product Catalog", "Payment Processing"],
     href: "https://rikakuma.netlify.app",
     image: rikakumaImg,
   },
   {
     title: "K-Snap Studio",
-    desc: "Portfolio site to showcase photography and drive inquiries.",
-    tags: ["Portfolio", "Brand"],
+    desc: "Website with galleries, client inquiries, and service packages.",
+    tags: ["Photo Galleries", "Client Inquiries", "Service Packages"],
     href: "https://ksnapstudio.ca",
     image: ksnapImg,
   },
@@ -35,8 +35,8 @@ export default function Projects() {
     <section className="projects" id="work">
       <Container className="projects__inner">
         <header className="projects__header">
-          <p className="projects__eyebrow">PROJECTS</p>
-          <h2 className="projects__title">Work that speaks for itself</h2>
+          <p className="projects__eyebrow">WORK</p>
+          <h2 className="projects__title">Featured Projects</h2>
           <p className="projects__sub">
             A few recent builds—clean, fast, and made to convert.
           </p>

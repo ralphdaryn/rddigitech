@@ -4,8 +4,22 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 3rem 0;
   color: #fff;
+
+  /* Mobile-first spacing */
+  padding-block: 56px 84px;
+
+  @media (min-width: 768px) {
+    padding-block: 72px 104px;
+  }
+
+  @media (min-width: 1024px) {
+    padding-block: 88px 120px;
+  }
+
+  @media (min-width: 1280px) {
+    padding-block: 96px 132px;
+  }
 
   &__image {
     position: absolute;
@@ -65,12 +79,8 @@
     position: relative;
     z-index: 1;
     text-align: center;
-  }
 
-  @media (min-width: 768px) {
-    padding: 96px 0;
-
-    &__inner {
+    @media (min-width: 768px) {
       text-align: left;
     }
   }
