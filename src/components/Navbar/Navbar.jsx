@@ -4,6 +4,8 @@ import { FiMenu, FiX } from "react-icons/fi";
 import "./Navbar.scss";
 import Container from "../Container/Container";
 
+import logo from "../../assets/images/desktop-logo.png";
+
 const NAV = [
   { href: "#services", label: "Services" },
   { href: "#work", label: "Work" },
@@ -23,8 +25,13 @@ export default function Navbar() {
     <header className="nav">
       <Container>
         <div className="nav__inner">
-          <a className="nav__logo" href="#home" onClick={close}>
-            RD Digitech
+          <a
+            className="nav__logo"
+            href="#home"
+            onClick={close}
+            aria-label="RD DigiTech Home"
+          >
+            <img src={logo} alt="RD DigiTech logo" />
           </a>
 
           {/* Desktop */}
