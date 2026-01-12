@@ -22,7 +22,7 @@ export default function Hero() {
           <p className="hero__sub">
             <p className="hero__sub">
               We help businesses get more leads and save time with simple
-              systems.
+              automated systems.
             </p>
           </p>
 
