@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(14, 32, 52, 0.75);
+  background: #010416;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
@@ -23,14 +23,14 @@
     text-decoration: none;
 
     img {
-      height: 28px;
+      height: 55px;
       width: auto;
       display: block;
     }
 
     @media (min-width: 768px) {
       img {
-        height: 32px;
+        height: 55px;
       }
     }
   }
