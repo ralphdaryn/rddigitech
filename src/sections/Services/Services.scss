@@ -65,6 +65,13 @@
     box-shadow: 0 10px 30px rgba(14, 32, 52, 0.06);
   }
 
+  &__icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 12px;
+    opacity: 0.9;
+  }
+
   &__cardTitle {
     font-size: 18px;
     margin: 0 0 6px 0;

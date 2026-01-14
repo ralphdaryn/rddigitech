@@ -17,26 +17,44 @@ export default function Services() {
 
         <div className="services__grid">
           <article className="services__card">
-            <h3 className="services__cardTitle">Website setup</h3>
+            <img
+              src="/icons/visibility.svg"
+              alt=""
+              aria-hidden="true"
+              className="services__icon"
+            />
+            <h3 className="services__cardTitle">Website & Visibility</h3>
             <p className="services__cardText">
-              A clean, mobile-friendly website that clearly explains what you do
-              and encourages people to contact you.
+              A clean, mobile-friendly website that tells your story, builds
+              trust, and helps the right people find you online.
             </p>
           </article>
 
           <article className="services__card">
+            <img
+              src="/icons/booking.svg"
+              alt=""
+              aria-hidden="true"
+              className="services__icon"
+            />
             <h3 className="services__cardTitle">Inquiry & Booking</h3>
             <p className="services__cardText">
-              Simple forms or booking so inquiries come straight to you with the
-              right details.
+              Simple forms or booking tools that make it easy for people to
+              reach out or book with the right details.
             </p>
           </article>
 
           <article className="services__card">
+            <img
+              src="/icons/automation.svg"
+              alt=""
+              aria-hidden="true"
+              className="services__icon"
+            />
             <h3 className="services__cardTitle">Tracking & Automation</h3>
             <p className="services__cardText">
-              See what’s working and automate basic follow-ups like
-              confirmations and reminders.
+              Clear insight into what’s working, with behind-the-scenes systems
+              that save you time.
             </p>
           </article>
         </div>
