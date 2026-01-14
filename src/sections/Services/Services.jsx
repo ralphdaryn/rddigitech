@@ -25,8 +25,8 @@ export default function Services() {
             />
             <h3 className="services__cardTitle">Design & Experience</h3>
             <p className="services__cardText">
-              Thoughtful design that works seamlessly across mobile, tablet, and
-              desktop — helping your business feel clear and credible.
+              Thoughtful web design that works seamlessly across mobile, tablet,
+              and desktop — built around how people experience your business.
             </p>
           </article>
           <article className="services__card">
@@ -38,7 +38,7 @@ export default function Services() {
             />
             <h3 className="services__cardTitle">Search & Discovery</h3>
             <p className="services__cardText">
-              Helping the right people find your business through search and a
+              Helping the right people find your business through search and deliver a
               strong online presence.
             </p>
           </article>

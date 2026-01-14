@@ -1,15 +1,17 @@
-// Hero.jsx
 import "./Hero.scss";
 import Container from "../../components/Container/Container";
+import heroImg from "../../assets/images/hero.png";
 
 export default function Hero() {
   return (
     <section className="hero" id="home">
       {/* Background image */}
-      <img className="hero__image" src="/hero.png" alt="" aria-hidden="true" />
+      <img className="hero__image" src={heroImg} alt="" aria-hidden="true" />
+
+      {/* Overlay gradients */}
       <div className="hero__overlay" aria-hidden="true" />
 
-      {/* subtle glow accents */}
+      {/* Glow accents */}
       <span className="hero__glow hero__glow--a" aria-hidden="true" />
       <span className="hero__glow hero__glow--b" aria-hidden="true" />
 
@@ -20,11 +22,9 @@ export default function Hero() {
           <h1 className="hero__title">Websites. Analytics. Automation.</h1>
 
           <p className="hero__sub">
-            We help businesses get more leads and save time with simple
-            automated systems.
+            We help businesses get more leads and save time with simple automated
+            systems.
           </p>
-
-          {/* Bubble messages */}
         </div>
 
         <div className="hero__ctas">
