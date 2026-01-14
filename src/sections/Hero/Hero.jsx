@@ -37,7 +37,7 @@ export default function Hero() {
         </div>
 
         <div className="hero__bubbles" aria-label="What we do">
-          <span className="hero__bubble">More Website Leads</span>
+          <span className="hero__bubble">Online Visibility</span>
           <span className="hero__bubble">Clear Analytics</span>
           <span className="hero__bubble">Time Saving Automation</span>
         </div>
