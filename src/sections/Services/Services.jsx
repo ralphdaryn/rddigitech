@@ -31,7 +31,7 @@ export default function Services() {
           </article>
           <article className="services__card">
             <img
-              src="/icons/visibility.svg"
+              src="/icons/search.svg"
               alt=""
               aria-hidden="true"
               className="services__icon"
