@@ -10,31 +10,33 @@ export default function Services() {
           <p className="services__eyebrow">SERVICES</p>
           <h2 className="services__title">What we help with</h2>
           <p className="services__sub">
-            A simple, done-for-you setup that helps your business get leads and
-            save time.
+            Everything you need to get more inquiries and save time — done for
+            you.
           </p>
         </header>
 
         <div className="services__grid">
           <article className="services__card">
-            <h3 className="services__cardTitle">Launch-ready website</h3>
+            <h3 className="services__cardTitle">Website setup</h3>
             <p className="services__cardText">
-              A clean, mobile-friendly site that clearly explains your offer and
-              drives inquiries.
+              A clean, mobile-friendly website that clearly explains what you do
+              and encourages people to contact you.
             </p>
           </article>
 
           <article className="services__card">
-            <h3 className="services__cardTitle">Lead capture setup</h3>
+            <h3 className="services__cardTitle">Inquiry & Booking</h3>
             <p className="services__cardText">
-              Forms or booking that send you the right information instantly.
+              Simple forms or booking so inquiries come straight to you with the
+              right details.
             </p>
           </article>
 
           <article className="services__card">
-            <h3 className="services__cardTitle">Tracking & follow-ups</h3>
+            <h3 className="services__cardTitle">Tracking & Automation</h3>
             <p className="services__cardText">
-              See what’s working and automate simple replies and reminders.
+              See what’s working and automate basic follow-ups like
+              confirmations and reminders.
             </p>
           </article>
         </div>
