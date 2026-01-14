@@ -23,10 +23,23 @@ export default function Services() {
               aria-hidden="true"
               className="services__icon"
             />
-            <h3 className="services__cardTitle">Website & Visibility</h3>
+            <h3 className="services__cardTitle">Design & Experience</h3>
             <p className="services__cardText">
-              A clean, mobile-friendly website that tells your story, builds
-              trust, and helps the right people find you online.
+              Thoughtful design that works seamlessly across mobile, tablet, and
+              desktop — helping your business feel clear and credible.
+            </p>
+          </article>
+          <article className="services__card">
+            <img
+              src="/icons/visibility.svg"
+              alt=""
+              aria-hidden="true"
+              className="services__icon"
+            />
+            <h3 className="services__cardTitle">Search & Discovery</h3>
+            <p className="services__cardText">
+              Helping the right people find your business through search and a
+              strong online presence.
             </p>
           </article>
 
