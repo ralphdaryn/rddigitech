@@ -6,12 +6,7 @@ export default function Hero() {
   return (
     <section className="hero" id="home">
       {/* Background image */}
-      <img
-        className="hero__image"
-        src="/hero.png"
-        alt=""
-        aria-hidden="true"
-      />
+      <img className="hero__image" src="/hero.png" alt="" aria-hidden="true" />
       <div className="hero__overlay" aria-hidden="true" />
 
       {/* subtle glow accents */}
@@ -25,24 +20,11 @@ export default function Hero() {
           <h1 className="hero__title">Websites. Analytics. Automation.</h1>
 
           <p className="hero__sub">
-            We help businesses get more leads and save time with simple automated
-            systems.
+            We help businesses get more leads and save time with simple
+            automated systems.
           </p>
 
-          <ul className="hero__points" aria-label="What we do">
-            <li className="hero__point">
-              <span className="hero__dot" aria-hidden="true" />
-              <span>Websites that turn visitors into inquiries</span>
-            </li>
-            <li className="hero__point">
-              <span className="hero__dot" aria-hidden="true" />
-              <span>Clear analytics that show what’s working</span>
-            </li>
-            <li className="hero__point">
-              <span className="hero__dot" aria-hidden="true" />
-              <span>Automations that reduce manual follow-ups</span>
-            </li>
-          </ul>
+          {/* Bubble messages */}
         </div>
 
         <div className="hero__ctas">
@@ -52,6 +34,12 @@ export default function Hero() {
           <a className="hero__btn hero__btn--ghost" href="#work">
             View work
           </a>
+        </div>
+
+        <div className="hero__bubbles" aria-label="What we do">
+          <span className="hero__bubble">More Website Leads</span>
+          <span className="hero__bubble">Clear Analytics</span>
+          <span className="hero__bubble">Time Saving Automation</span>
         </div>
       </Container>
     </section>
