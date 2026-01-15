@@ -22,7 +22,7 @@ export default function Hero() {
           <h1 className="hero__title">Websites. Analytics. Automation.</h1>
 
           <p className="hero__sub">
-            We help businesses get more leads and save time with simple automated
+            We help businesses generate more leads and save time with simple automated
             systems.
           </p>
         </div>
