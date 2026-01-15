@@ -18,7 +18,7 @@ const PROJECTS = [
     title: "Rikakuma Shop",
     desc: "Ecommerce website selling custom-designed products online.",
     tags: ["E-commerce", "Product Catalog", "Payment Processing"],
-    href: "https://rikakuma.netlify.app",
+    href: "https://rikakuma.com",
     image: rikakumaImg,
   },
   {
