@@ -1,4 +1,3 @@
-// Reviews.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import "./Reviews.scss";
 import Container from "../../components/Container/Container";
@@ -6,7 +5,7 @@ import Container from "../../components/Container/Container";
 export default function Reviews() {
   const trackRef = useRef(null);
   const cardRefs = useRef([]);
-  const [active, setActive] = useState(1); // start with middle card active
+  const [active, setActive] = useState(1);
 
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
@@ -53,16 +52,12 @@ export default function Reviews() {
 
         if (best.ratio > 0) setActive(best.index);
       },
-      {
-        root: track,
-        threshold: [0.25, 0.5, 0.6, 0.75, 0.9],
-      }
+      { root: track, threshold: [0.25, 0.5, 0.6, 0.75, 0.9] }
     );
 
     cards.forEach((card) => observer.observe(card));
     return () => observer.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [active]);
 
   // Update arrow enabled/disabled state
   useEffect(() => {
@@ -99,20 +94,17 @@ export default function Reviews() {
     const trackCenter = trackRect.left + trackRect.width / 2;
     const elCenter = elRect.left + elRect.width / 2;
 
-    const delta = elCenter - trackCenter;
-
-    track.scrollBy({ left: delta, behavior: "smooth" });
+    track.scrollBy({ left: elCenter - trackCenter, behavior: "smooth" });
   };
 
   const goLeft = () => centerToIndex(Math.max(0, active - 1));
-  const goRight = () => centerToIndex(Math.min(cardsData.length - 1, active + 1));
+  const goRight = () =>
+    centerToIndex(Math.min(cardsData.length - 1, active + 1));
 
-  // Optional: on first mount, gently center the middle card
+  // On first mount, center the middle card
   useEffect(() => {
-    // tiny delay so layout measures correctly
     const t = setTimeout(() => centerToIndex(1), 50);
     return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
