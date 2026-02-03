@@ -1,8 +1,51 @@
 // Contact.jsx
+import { useState } from "react";
 import "./Contact.scss";
 import Container from "../../components/Container/Container";
 
 export default function Contact() {
+  const [status, setStatus] = useState({ type: "", msg: "" });
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus({ type: "", msg: "" });
+    setLoading(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+    };
+
+    try {
+      const res = await fetch("/.netlify/functions/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.ok) {
+        throw new Error(data?.error || "Failed to send message.");
+      }
+
+      setStatus({ type: "success", msg: "Sent! I’ll get back to you soon." });
+      form.reset();
+    } catch (err) {
+      setStatus({
+        type: "error",
+        msg: err?.message || "Something went wrong. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <section className="contact" id="contact">
       <Container className="contact__inner">
@@ -14,11 +57,7 @@ export default function Contact() {
           </p>
         </header>
 
-        <form
-          className="contact__form"
-          name="contact"
-          method="POST"
-        >
+        <form className="contact__form" onSubmit={handleSubmit}>
           <div className="contact__field">
             <label htmlFor="name" className="contact__label">
               Name
@@ -61,9 +100,18 @@ export default function Contact() {
             />
           </div>
 
-          <button type="submit" className="contact__btn">
-            Send message
+          <button type="submit" className="contact__btn" disabled={loading}>
+            {loading ? "Sending..." : "Send message"}
           </button>
+
+          {status.msg ? (
+            <p
+              className={`contact__status contact__status--${status.type}`}
+              role="status"
+            >
+              {status.msg}
+            </p>
+          ) : null}
         </form>
       </Container>
     </section>
