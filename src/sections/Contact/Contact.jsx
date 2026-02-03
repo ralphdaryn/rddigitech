@@ -34,7 +34,7 @@ export default function Contact() {
         throw new Error(data?.error || "Failed to send message.");
       }
 
-      setStatus({ type: "success", msg: "Sent! I’ll get back to you soon." });
+      setStatus({ type: "success", msg: "Your message was sent successfully!" });
       form.reset();
     } catch (err) {
       setStatus({

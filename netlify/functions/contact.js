@@ -1,3 +1,4 @@
+/* global process */
 import nodemailer from "nodemailer";
 
 export async function handler(event) {
@@ -22,8 +23,8 @@ export async function handler(event) {
       };
     }
 
-    const GMAIL_USER = process.env.GMAIL_USER; // your gmail
-    const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD; // app password
+    const GMAIL_USER = process.env.GMAIL_USER;
+    const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
     const TO_EMAIL = process.env.TO_EMAIL || "ralphdarync@gmail.com";
 
     if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
@@ -38,24 +39,18 @@ export async function handler(event) {
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
-      auth: {
-        user: GMAIL_USER,
-        pass: GMAIL_APP_PASSWORD,
-      },
+      auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
     });
 
     await transporter.sendMail({
       from: `RD Digital Technology <${GMAIL_USER}>`,
-      to: TO_EMAIL, // sends to your email
-      replyTo: email, // so you can hit reply to the sender
+      to: TO_EMAIL,
+      replyTo: email,
       subject: `New Contact Form — ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n`,
     });
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ ok: true }),
-    };
+    return { statusCode: 200, body: JSON.stringify({ ok: true }) };
   } catch (err) {
     return {
       statusCode: 500,
