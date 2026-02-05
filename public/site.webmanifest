@@ -1,0 +1,8 @@
+{
+  "name": "RD Digitech",
+  "short_name": "RD Digitech",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0e2034",
+  "theme_color": "#0e2034"
+}
