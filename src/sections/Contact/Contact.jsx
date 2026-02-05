@@ -28,13 +28,29 @@ export default function Contact() {
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json().catch(() => ({}));
+      // ✅ Read raw response first (works even if server crashes)
+      const text = await res.text();
+      let data = {};
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch {
+        data = {};
+      }
 
-      if (!res.ok || !data.ok) {
+      if (!res.ok) {
+        throw new Error(
+          data?.details || data?.error || text || "Server error."
+        );
+      }
+
+      if (!data.ok) {
         throw new Error(data?.error || "Failed to send message.");
       }
 
-      setStatus({ type: "success", msg: "Your message was sent successfully!" });
+      setStatus({
+        type: "success",
+        msg: "Your message was sent successfully!",
+      });
       form.reset();
     } catch (err) {
       setStatus({
@@ -104,14 +120,14 @@ export default function Contact() {
             {loading ? "Sending..." : "Send message"}
           </button>
 
-          {status.msg ? (
+          {status.msg && (
             <p
               className={`contact__status contact__status--${status.type}`}
               role="status"
             >
               {status.msg}
             </p>
-          ) : null}
+          )}
         </form>
       </Container>
     </section>
