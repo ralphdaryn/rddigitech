@@ -1,4 +1,3 @@
-// Reviews.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import "./Reviews.scss";
 import Container from "../../components/Container/Container";
@@ -32,7 +31,7 @@ export default function Reviews() {
     []
   );
 
-  // Track which card is most visible (active)
+  // Track which card is most visible (active) ✅ FIXED
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -40,18 +39,27 @@ export default function Reviews() {
     const cards = cardRefs.current.filter(Boolean);
     if (!cards.length) return;
 
+    const ratios = new Map(); // index -> latest intersection ratio
+
     const observer = new IntersectionObserver(
       (entries) => {
-        let best = { index: 0, ratio: 0 };
-
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
           const index = Number(entry.target.dataset.index);
-          const ratio = entry.intersectionRatio;
-          if (ratio > best.ratio) best = { index, ratio };
+          ratios.set(index, entry.isIntersecting ? entry.intersectionRatio : 0);
         });
 
-        if (best.ratio > 0) setActive(best.index);
+        // Pick highest ratio across ALL cards (not just the current entries)
+        let bestIndex = 0;
+        let bestRatio = 0;
+
+        for (const [index, ratio] of ratios.entries()) {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestIndex = index;
+          }
+        }
+
+        if (bestRatio > 0) setActive(bestIndex);
       },
       { root: track, threshold: [0.25, 0.5, 0.6, 0.75, 0.9] }
     );
@@ -94,6 +102,9 @@ export default function Reviews() {
 
     const targetLeft = el.offsetLeft - paddingLeft;
     track.scrollTo({ left: targetLeft, behavior: "smooth" });
+
+    // ✅ makes arrows react instantly (optional but recommended)
+    setActive(index);
   };
 
   const goLeft = () => scrollToIndex(Math.max(0, active - 1));
