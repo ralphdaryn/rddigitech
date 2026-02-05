@@ -42,7 +42,7 @@ export default function Reviews() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        let best = { index: active, ratio: 0 };
+        let best = { index: 0, ratio: 0 };
 
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
@@ -58,7 +58,7 @@ export default function Reviews() {
 
     cards.forEach((card) => observer.observe(card));
     return () => observer.disconnect();
-  }, [active]);
+  }, []);
 
   // Update arrow enabled/disabled state
   useEffect(() => {
@@ -105,7 +105,6 @@ export default function Reviews() {
     const track = trackRef.current;
     if (!track) return;
     track.scrollTo({ left: 0, behavior: "auto" });
-    setActive(0);
   }, []);
 
   return (
