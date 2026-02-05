@@ -1,3 +1,4 @@
+// Reviews.scss
 @use "../../styles/variables" as *;
 
 .reviews {
@@ -140,7 +141,7 @@
 
   &__card {
     flex: 0 0 82%;
-    scroll-snap-align: center;
+    scroll-snap-align: start; // ✅ changed from center → start
 
     padding: 18px;
     border-radius: 18px;

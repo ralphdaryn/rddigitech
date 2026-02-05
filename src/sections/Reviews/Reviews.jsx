@@ -1,3 +1,4 @@
+// Reviews.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import "./Reviews.scss";
 import Container from "../../components/Container/Container";
@@ -5,7 +6,7 @@ import Container from "../../components/Container/Container";
 export default function Reviews() {
   const trackRef = useRef(null);
   const cardRefs = useRef([]);
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
 
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
@@ -31,7 +32,7 @@ export default function Reviews() {
     []
   );
 
-  // Track which card is most centered (active)
+  // Track which card is most visible (active)
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -82,29 +83,29 @@ export default function Reviews() {
     };
   }, []);
 
-  // Center a specific index in the track
-  const centerToIndex = (index) => {
+  // Scroll to a specific card, aligned to the LEFT (not centered)
+  const scrollToIndex = (index) => {
     const track = trackRef.current;
     const el = cardRefs.current[index];
     if (!track || !el) return;
 
-    const trackRect = track.getBoundingClientRect();
-    const elRect = el.getBoundingClientRect();
+    const styles = window.getComputedStyle(track);
+    const paddingLeft = parseFloat(styles.paddingLeft || "0") || 0;
 
-    const trackCenter = trackRect.left + trackRect.width / 2;
-    const elCenter = elRect.left + elRect.width / 2;
-
-    track.scrollBy({ left: elCenter - trackCenter, behavior: "smooth" });
+    const targetLeft = el.offsetLeft - paddingLeft;
+    track.scrollTo({ left: targetLeft, behavior: "smooth" });
   };
 
-  const goLeft = () => centerToIndex(Math.max(0, active - 1));
+  const goLeft = () => scrollToIndex(Math.max(0, active - 1));
   const goRight = () =>
-    centerToIndex(Math.min(cardsData.length - 1, active + 1));
+    scrollToIndex(Math.min(cardsData.length - 1, active + 1));
 
-  // On first mount, center the middle card
+  // On first mount, start from the LEFT (first card)
   useEffect(() => {
-    const t = setTimeout(() => centerToIndex(1), 50);
-    return () => clearTimeout(t);
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollTo({ left: 0, behavior: "auto" });
+    setActive(0);
   }, []);
 
   return (
