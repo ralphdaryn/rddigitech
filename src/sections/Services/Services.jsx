@@ -1,4 +1,3 @@
-// Services.jsx
 import "./Services.scss";
 import Container from "../../components/Container/Container";
 
@@ -6,6 +5,7 @@ export default function Services() {
   return (
     <section className="services" id="services">
       <Container className="services__inner">
+        {/* Main Services Header */}
         <header className="services__header">
           <p className="services__eyebrow">SERVICES</p>
           <h2 className="services__title">What we help with</h2>
@@ -15,6 +15,7 @@ export default function Services() {
           </p>
         </header>
 
+        {/* Services Grid */}
         <div className="services__grid">
           <article className="services__card">
             <img
@@ -29,6 +30,7 @@ export default function Services() {
               and desktop — built around how people experience your business.
             </p>
           </article>
+
           <article className="services__card">
             <img
               src="/icons/search.svg"
@@ -38,8 +40,8 @@ export default function Services() {
             />
             <h3 className="services__cardTitle">Search & Discovery</h3>
             <p className="services__cardText">
-              Helping the right people find your business through search and deliver a
-              strong online presence.
+              Helping the right people find your business through search and
+              deliver a strong online presence.
             </p>
           </article>
 
@@ -72,6 +74,47 @@ export default function Services() {
           </article>
         </div>
 
+        {/* HOW IT WORKS */}
+        <section className="services__process" aria-label="How it works">
+          <header className="services__processHeader">
+            <p className="services__eyebrow">PROCESS</p>
+            <h3 className="services__processTitle">How it works</h3>
+            <p className="services__sub">
+              A simple 3-step process that keeps things clear and focused.
+            </p>
+          </header>
+
+          <ol className="services__processList">
+            <li className="services__processItem">
+              <span className="services__processNum" aria-hidden="true">
+                1
+              </span>
+              <p className="services__processText">
+                Customers find you online.
+              </p>
+            </li>
+
+            <li className="services__processItem">
+              <span className="services__processNum" aria-hidden="true">
+                2
+              </span>
+              <p className="services__processText">
+                See what’s actually working.
+              </p>
+            </li>
+
+            <li className="services__processItem">
+              <span className="services__processNum" aria-hidden="true">
+                3
+              </span>
+              <p className="services__processText">
+                Let the rest take care of itself.
+              </p>
+            </li>
+          </ol>
+        </section>
+
+        {/* CTA */}
         <div className="services__cta">
           <p className="services__ctaText">
             Not sure where to start? I’ll recommend the simplest plan.

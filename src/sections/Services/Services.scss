@@ -1,4 +1,3 @@
-// Services.scss
 @use "../../styles/variables" as *;
 
 .services {
@@ -10,9 +9,8 @@
   &::before {
     content: "";
     position: absolute;
+    inset-inline: 0;
     top: 0;
-    left: 0;
-    right: 0;
     height: 1px;
     background: rgba(14, 32, 52, 0.08);
   }
@@ -24,7 +22,7 @@
   /* Header */
   &__header {
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
   }
 
   &__eyebrow {
@@ -32,13 +30,13 @@
     letter-spacing: 0.22em;
     font-weight: 700;
     opacity: 0.75;
-    margin: 0 0 10px 0;
+    margin-bottom: 10px;
   }
 
   &__title {
     font-size: clamp(26px, 6vw, 38px);
     line-height: 1.15;
-    margin: 0 0 10px 0;
+    margin-bottom: 10px;
     letter-spacing: -0.02em;
   }
 
@@ -69,7 +67,6 @@
     width: 44px;
     height: 44px;
     margin-bottom: 12px;
-    opacity: 0.9;
   }
 
   &__cardTitle {
@@ -85,7 +82,71 @@
     opacity: 0.85;
   }
 
-  /* CTA */
+  /* Process */
+  &__process {
+    margin-top: 64px;
+  }
+
+  &__processHeader {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  &__processTitle {
+    font-size: clamp(26px, 6vw, 38px);
+    line-height: 1.2;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.02em;
+  }
+
+  &__processList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  &__processItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 16px;
+    border-radius: 18px;
+    background: rgba(14, 32, 52, 0.03);
+    border: 1px solid rgba(14, 32, 52, 0.08);
+    box-shadow: 0 10px 30px rgba(14, 32, 52, 0.04);
+  }
+
+  &__processNum {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+
+    display: grid;
+    place-items: center;
+
+    font-weight: 900;
+    font-size: 13px;
+
+    background: rgba(21, 183, 232, 0.14);
+    border: 1px solid rgba(21, 183, 232, 0.22);
+    color: #0e2034;
+
+    flex: 0 0 34px;
+    margin-top: 1px;
+  }
+
+  &__processText {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    opacity: 0.92;
+  }
+
+  /* ✅ CTA (now matches projects__cta exactly) */
   &__cta {
     margin-top: 22px;
     padding: 16px;
@@ -99,8 +160,8 @@
   }
 
   &__ctaText {
-    font-size: 14px;
     margin: 0;
+    font-size: 14px;
     opacity: 0.9;
   }
 
@@ -108,13 +169,16 @@
     height: 44px;
     padding: 0 16px;
     border-radius: 12px;
-    background: $electric;
+
+    background: $electric; // same as projects
     color: #0e2034;
     text-decoration: none;
     font-weight: 800;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     transition: 0.2s ease;
 
     &:hover {
@@ -127,7 +191,8 @@
   @media (min-width: 768px) {
     padding: 92px 0;
 
-    &__header {
+    &__header,
+    &__processHeader {
       text-align: left;
     }
 
@@ -139,6 +204,15 @@
     &__grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
+    }
+
+    &__processList {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    &__processItem {
+      padding: 18px;
     }
 
     &__cta {
@@ -165,6 +239,10 @@
     }
 
     &__cardText {
+      font-size: 15px;
+    }
+
+    &__processText {
       font-size: 15px;
     }
   }
