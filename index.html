@@ -13,7 +13,7 @@
     />
     <meta name="robots" content="index, follow" />
 
-    <!-- Canonical (update to your live domain) -->
+    <!-- Canonical -->
     <link rel="canonical" href="https://rddigitech.ca/" />
 
     <!-- Favicons -->
@@ -21,10 +21,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <!-- Optional: if you also have a favicon.ico -->
-    <!-- <link rel="icon" href="/favicon.ico" /> -->
 
-    <!-- Open Graph (Google/FB/iMessage previews) -->
+    <!-- Open Graph (link previews: Google, Facebook, iMessage, Slack) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="RD Digital Technology" />
     <meta
@@ -36,10 +34,9 @@
       content="Fast websites, clear analytics, and time-saving automation for small businesses."
     />
     <meta property="og:url" content="https://rddigitech.ca/" />
-    <!-- If you have a social share image, add it -->
     <!-- <meta property="og:image" content="https://rddigitech.ca/og-image.png" /> -->
 
-    <!-- Twitter -->
+    <!-- Twitter / X (also used by many preview tools) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -51,10 +48,10 @@
     />
     <!-- <meta name="twitter:image" content="https://rddigitech.ca/og-image.png" /> -->
 
-    <!-- Theme color (nice for mobile browser UI) -->
+    <!-- Theme color -->
     <meta name="theme-color" content="#0e2034" />
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics 4 -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-XZDBYVBXVE"
@@ -65,7 +62,11 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "G-XZDBYVBXVE");
+
+      // Force initial page_view for SPA (Vite + React)
+      gtag("config", "G-XZDBYVBXVE", {
+        send_page_view: true,
+      });
     </script>
   </head>
 
