@@ -107,12 +107,12 @@
     gap: 14px;
   }
 
+  /* 🔽 GAP REDUCED HERE */
   &__processItem {
     display: flex;
-    align-items: center;
-    gap: 12px;
-
-    padding: 16px;
+    align-items: flex-start;
+    gap: 8px; // was 12px
+    padding: 12px; // was 16px
     border-radius: 18px;
     background: rgba(14, 32, 52, 0.03);
     border: 1px solid rgba(14, 32, 52, 0.08);
@@ -123,30 +123,38 @@
     width: 34px;
     height: 34px;
     border-radius: 999px;
-
     display: grid;
     place-items: center;
-
     font-weight: 900;
     font-size: 13px;
-
     background: rgba(21, 183, 232, 0.14);
     border: 1px solid rgba(21, 183, 232, 0.22);
     color: #0e2034;
-
     flex: 0 0 34px;
-    margin-top: 1px;
+    margin-top: 2px;
   }
 
   &__processText {
     margin: 0;
     font-size: 14px;
-    font-weight: 700;
-    line-height: 1.5;
+    line-height: 1.45;
     opacity: 0.92;
+
+    strong {
+      display: block;
+      font-weight: 800;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    span {
+      display: block;
+      font-weight: 500;
+      opacity: 0.75;
+    }
   }
 
-  /* ✅ CTA (now matches projects__cta exactly) */
+  /* CTA */
   &__cta {
     margin-top: 22px;
     padding: 16px;
@@ -169,16 +177,13 @@
     height: 44px;
     padding: 0 16px;
     border-radius: 12px;
-
-    background: $electric; // same as projects
+    background: $electric;
     color: #0e2034;
     text-decoration: none;
     font-weight: 800;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     transition: 0.2s ease;
 
     &:hover {
@@ -209,10 +214,6 @@
     &__processList {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-    }
-
-    &__processItem {
-      padding: 18px;
     }
 
     &__cta {

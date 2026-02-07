@@ -90,7 +90,10 @@ export default function Services() {
                 1
               </span>
               <p className="services__processText">
-                Customers find you online.
+                <strong>Customers find you online</strong>
+                <span>
+                  We track who visits your site and what they look at.
+                </span>
               </p>
             </li>
 
@@ -99,7 +102,11 @@ export default function Services() {
                 2
               </span>
               <p className="services__processText">
-                See what’s actually working.
+                <strong>See what’s actually working</strong>
+                <span>
+                  Clear insight into traffic, clicks, and inquiries — no
+                  guesswork.
+                </span>
               </p>
             </li>
 
@@ -108,7 +115,11 @@ export default function Services() {
                 3
               </span>
               <p className="services__processText">
-                Let the rest take care of itself.
+                <strong>Let the rest take care of itself</strong>
+                <span>
+                  Forms, follow-ups, and notifications run automatically in the
+                  background.
+                </span>
               </p>
             </li>
           </ol>
