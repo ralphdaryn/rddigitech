@@ -1,0 +1,21 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  width="24"
+  height="24"
+  fill="none"
+  stroke="#15b7e8"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <!-- Canvas -->
+  <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
+
+  <!-- Visual block (hero / UI element) -->
+  <rect x="6.8" y="6.8" width="6.2" height="4.2" rx="1.1" />
+
+  <!-- Content lines -->
+  <line x1="6.8" y1="14.8" x2="17.2" y2="14.8" />
+  <line x1="6.8" y1="17.2" x2="13.8" y2="17.2" />
+</svg>

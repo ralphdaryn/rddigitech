@@ -1,0 +1,21 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  width="24"
+  height="24"
+  fill="none"
+  stroke="#15b7e8"
+  stroke-width="1.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <!-- Server stack -->
+  <rect x="3" y="3" width="18" height="6" rx="2" />
+  <rect x="3" y="9" width="18" height="6" rx="2" />
+  <rect x="3" y="15" width="18" height="6" rx="2" />
+
+  <!-- Status lights -->
+  <circle cx="7" cy="6" r="0.75" fill="#15b7e8" />
+  <circle cx="7" cy="12" r="0.75" fill="#15b7e8" />
+  <circle cx="7" cy="18" r="0.75" fill="#15b7e8" />
+</svg>

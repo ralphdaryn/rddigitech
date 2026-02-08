@@ -22,8 +22,7 @@ export default function Hero() {
           <h1 className="hero__title">Websites. Analytics. Automation.</h1>
 
           <p className="hero__sub">
-            We build websites and simple tools that turn visitors into leads —
-            and save you time.
+        We build fast, modern websites and simple tools that turn visitors into leads — and show you what’s actually working.
           </p>
         </div>
 
@@ -38,7 +37,7 @@ export default function Hero() {
 
         <div className="hero__bubbles" aria-label="What we do">
           <span className="hero__bubble">Get Found Online</span>
-          <span className="hero__bubble">Know What’s Working</span>
+          <span className="hero__bubble">See What’s Working</span>
           <span className="hero__bubble">Save Time Automatically</span>
         </div>
       </Container>

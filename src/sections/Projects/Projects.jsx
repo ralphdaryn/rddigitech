@@ -17,14 +17,14 @@ const PROJECTS = [
   {
     title: "Rikakuma Shop",
     desc: "Ecommerce website selling custom-designed products online.",
-    tags: ["E-commerce", "Product Catalog", "Payment Processing"],
+    tags: ["Online Store", "Product Catalog", "Secure payments"],
     href: "https://rikakuma.com",
     image: rikakumaImg,
   },
   {
     title: "K-Snap Studio",
     desc: "Website with galleries, client inquiries, and service packages.",
-    tags: ["Photo Galleries", "Client Inquiries", "Service Packages"],
+    tags: ["Photo Galleries", "Client Inquiry Forms", "Service Packages"],
     href: "https://ksnapstudio.ca",
     image: ksnapImg,
   },
@@ -38,7 +38,7 @@ export default function Projects() {
           <p className="projects__eyebrow">WORK</p>
           <h2 className="projects__title">Featured Projects</h2>
           <p className="projects__sub">
-            A few recent builds—clean, fast, and made to convert.
+            A selection of recent builds — clean, fast, and designed to convert.
           </p>
         </header>
 

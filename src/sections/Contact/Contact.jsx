@@ -39,7 +39,7 @@ export default function Contact() {
 
       if (!res.ok) {
         throw new Error(
-          data?.details || data?.error || text || "Server error."
+          data?.details || data?.error || text || "Server error.",
         );
       }
 
@@ -69,7 +69,8 @@ export default function Contact() {
           <p className="contact__eyebrow">CONTACT</p>
           <h2 className="contact__title">Let’s work together</h2>
           <p className="contact__sub">
-            Have a project in mind? Send a message and I’ll get back to you.
+            Have a project in mind? <br></br>Send a message and I’ll follow up with
+            recommendations.
           </p>
         </header>
 
