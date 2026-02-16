@@ -1,11 +1,80 @@
 import "./Services.scss";
 import Container from "../../components/Container/Container";
+import { useEffect, useState } from "react";
+
+// ✅ Step images
+import step1 from "../../assets/images/step1.png";
+import step2 from "../../assets/images/step2.png";
+import step3 from "../../assets/images/step3.png";
+
+/* ✅ Inline SVG Icons */
+const StepIconDiscover = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+    <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+    <path
+      d="M20 20l-3.5-3.5"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+const StepIconDashboard = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+    <rect
+      x="3"
+      y="4"
+      width="18"
+      height="16"
+      rx="3"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+    <path
+      d="M7 14v-3M12 14V8M17 14v-5"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+const StepIconNotify = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+    <path
+      d="M6.5 9a5.5 5.5 0 0 1 11 0c0 4.5 2 6 2 6h-15s2-1.5 2-6Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10 19a2 2 0 0 0 4 0"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
 
 export default function Services() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openModal = (img) => setSelectedImage(img);
+  const closeModal = () => setSelectedImage(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key === "Escape") closeModal();
+    };
+    if (selectedImage) window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [selectedImage]);
+
   return (
     <section className="services" id="services">
       <Container className="services__inner">
-        {/* Main Services Header */}
+        {/* Header */}
         <header className="services__header">
           <p className="services__eyebrow">SERVICES</p>
           <h2 className="services__title">What we help with</h2>
@@ -15,7 +84,7 @@ export default function Services() {
           </p>
         </header>
 
-        {/* Services Grid */}
+        {/* Grid */}
         <div className="services__grid">
           <article className="services__card">
             <img
@@ -26,9 +95,7 @@ export default function Services() {
             />
             <h3 className="services__cardTitle">Design & Experience</h3>
             <p className="services__cardText">
-              Clean, modern websites that look great on mobile, tablet, and
-              desktop — designed around how real customers actually use your
-              site.
+              Clean, modern websites that look great on all devices.
             </p>
           </article>
 
@@ -41,8 +108,7 @@ export default function Services() {
             />
             <h3 className="services__cardTitle">Search & Discovery</h3>
             <p className="services__cardText">
-              Help the right people find your business through Google and social
-              media, with a clear and trustworthy online presence.
+              Help the right people find your business online.
             </p>
           </article>
 
@@ -55,9 +121,7 @@ export default function Services() {
             />
             <h3 className="services__cardTitle">Inquiry & Booking</h3>
             <p className="services__cardText">
-              Simple forms and booking tools that make it easy for customers to
-              reach out or register — capturing the details you need to follow
-              up properly.
+              Booking and inquiry flows that convert visitors.
             </p>
           </article>
 
@@ -70,8 +134,7 @@ export default function Services() {
             />
             <h3 className="services__cardTitle">Analytics & Insights</h3>
             <p className="services__cardText">
-              A clear dashboard showing traffic, page views, and sign-ups — so
-              you can see what’s working and where to improve.
+              Track traffic, engagement, and conversions.
             </p>
           </article>
 
@@ -84,62 +147,86 @@ export default function Services() {
             />
             <h3 className="services__cardTitle">Hosting & Reliability</h3>
             <p className="services__cardText">
-              Fast, secure hosting that keeps your website online, loading
-              quickly, and protected — fully managed so you don’t have to think
-              about it.
+              Fast, secure, fully managed hosting.
             </p>
           </article>
         </div>
 
         {/* HOW IT WORKS */}
-        <section className="services__process" aria-label="How it works">
+        <section className="services__process">
           <header className="services__processHeader">
             <p className="services__eyebrow">PROCESS</p>
             <h3 className="services__processTitle">How it works</h3>
             <p className="services__sub">
-              A simple 3-step system that turns visits into clear insight and
-              real action.
+              A simple 3-step system that turns visits into insight.
             </p>
           </header>
 
           <ol className="services__processList">
             <li className="services__processItem">
-              <span className="services__processNum" aria-hidden="true">
-                1
-              </span>
+              <span className="services__processNum">1</span>
+
               <p className="services__processText">
-                <strong>Customers find you online</strong>
-                <span>
-                  Your website shows up on Google and social media — and we
-                  track how people find you.
-                </span>
+                <strong className="services__processTitleRow">
+                  Customers find you online
+                  <StepIconDiscover className="services__inlineIcon" />
+                </strong>
+                <span>Your site appears on Google & social media.</span>
               </p>
+
+              <img
+                src={step1}
+                alt="Step 1"
+                className="services__stepImg"
+                onClick={() => openModal(step1)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && openModal(step1)}
+              />
             </li>
 
             <li className="services__processItem">
-              <span className="services__processNum" aria-hidden="true">
-                2
-              </span>
+              <span className="services__processNum">2</span>
+
               <p className="services__processText">
-                <strong>See what’s happening on your site</strong>
-                <span>
-                  View page visits, traffic sources, and sign-ups in one clear
-                  dashboard.
-                </span>
+                <strong className="services__processTitleRow">
+                  See what’s happening
+                  <StepIconDashboard className="services__inlineIcon" />
+                </strong>
+                <span>Track visits, traffic & engagement.</span>
               </p>
+
+              <img
+                src={step2}
+                alt="Step 2"
+                className="services__stepImg"
+                onClick={() => openModal(step2)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && openModal(step2)}
+              />
             </li>
 
             <li className="services__processItem">
-              <span className="services__processNum" aria-hidden="true">
-                3
-              </span>
+              <span className="services__processNum">3</span>
+
               <p className="services__processText">
-                <strong>Get notified when clients take action</strong>
-                <span>
-                  When someone fills out a form or registers, you’re notified
-                  automatically.
-                </span>
+                <strong className="services__processTitleRow">
+                  Get notified
+                  <StepIconNotify className="services__inlineIcon" />
+                </strong>
+                <span>Instant alerts when clients take action.</span>
               </p>
+
+              <img
+                src={step3}
+                alt="Step 3"
+                className="services__stepImg"
+                onClick={() => openModal(step3)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && openModal(step3)}
+              />
             </li>
           </ol>
         </section>
@@ -147,14 +234,34 @@ export default function Services() {
         {/* CTA */}
         <div className="services__cta">
           <p className="services__ctaText">
-            Not sure where to start? I’ll recommend the right setup for your
-            business.
+            Not sure where to start? I’ll recommend the right setup.
           </p>
           <a className="services__btn" href="#contact">
             Get started
           </a>
         </div>
       </Container>
+
+      {/* ✅ Modal */}
+      {selectedImage && (
+        <div className="services__modal" onClick={closeModal}>
+          <button
+            className="services__modalClose"
+            type="button"
+            aria-label="Close image"
+            onClick={closeModal}
+          >
+            ×
+          </button>
+
+          <div
+            className="services__modalContent"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img src={selectedImage} alt="Expanded view" />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
