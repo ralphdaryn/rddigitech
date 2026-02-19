@@ -1,9 +1,31 @@
+/* src/pages/Dashboard/Dashboard.scss */
+
 .rdash {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.rdash__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 420px at 15% 10%, rgba(21, 183, 232, 0.22), transparent 55%),
+    radial-gradient(700px 320px at 90% 20%, rgba(21, 183, 232, 0.14), transparent 55%),
+    radial-gradient(900px 520px at 55% 105%, rgba(168, 100, 193, 0.12), transparent 60%),
+    linear-gradient(180deg, #0e2034 0%, #071724 100%);
+  filter: saturate(1.05);
+}
+
+.rdash__wrap {
+  position: relative;
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px;
+  color: rgba(255, 255, 255, 0.92);
 }
 
+/* Header */
 .rdash__header {
   display: flex;
   gap: 16px;
@@ -13,14 +35,24 @@
   margin-bottom: 16px;
 }
 
+.rdash__eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
 .rdash__title {
   margin: 0;
-  font-size: 28px;
+  font-size: 30px;
+  letter-spacing: -0.02em;
 }
 
 .rdash__sub {
-  margin: 6px 0 0;
+  margin: 8px 0 0;
   opacity: 0.75;
+  font-size: 14px;
 }
 
 .rdash__controls {
@@ -34,37 +66,69 @@
   display: grid;
   gap: 6px;
   font-size: 13px;
+  opacity: 0.9;
 }
 
 .rdash__select {
-  height: 40px;
+  height: 42px;
   padding: 0 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(14, 32, 52, 0.15);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(7, 23, 36, 0.55);
+  color: rgba(255, 255, 255, 0.92);
+  outline: none;
+
+  &:focus {
+    border-color: rgba(21, 183, 232, 0.55);
+    box-shadow: 0 0 0 4px rgba(21, 183, 232, 0.18);
+  }
 }
 
 .rdash__logout {
-  height: 40px;
-  padding: 0 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(14, 32, 52, 0.15);
-  background: white;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(7, 23, 36, 0.55);
+  color: rgba(255, 255, 255, 0.92);
   cursor: pointer;
+
+  &:hover {
+    border-color: rgba(21, 183, 232, 0.45);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(21, 183, 232, 0.18);
+  }
 }
 
-.rdash__state {
+/* States */
+.rdash__state,
+.rdash__error {
+  margin-top: 14px;
   padding: 16px;
-  border-radius: 12px;
-  background: rgba(14, 32, 52, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(7, 23, 36, 0.55);
+  backdrop-filter: blur(8px);
 }
 
 .rdash__error {
-  padding: 16px;
-  border-radius: 12px;
-  background: rgba(220, 38, 38, 0.08);
-  color: #b91c1c;
+  border-color: rgba(255, 99, 99, 0.35);
+  background: rgba(120, 18, 18, 0.22);
 }
 
+.rdash__errorTitle {
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.rdash__errorMsg {
+  opacity: 0.9;
+}
+
+/* KPI Grid */
 .rdash__kpis {
   display: grid;
   gap: 12px;
@@ -78,22 +142,25 @@
 
 .rdash__kpi {
   padding: 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(14, 32, 52, 0.12);
-  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(7, 23, 36, 0.55);
+  backdrop-filter: blur(8px);
 }
 
 .rdash__kpiLabel {
   font-size: 12px;
-  opacity: 0.7;
+  opacity: 0.72;
 }
 
 .rdash__kpiValue {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 850;
+  letter-spacing: -0.02em;
 }
 
+/* Panels */
 .rdash__grid {
   display: grid;
   gap: 12px;
@@ -105,18 +172,39 @@
 
 .rdash__panel {
   padding: 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(14, 32, 52, 0.12);
-  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(7, 23, 36, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.rdash__panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .rdash__panelTitle {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.rdash__pill {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(21, 183, 232, 0.35);
+  background: rgba(21, 183, 232, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  opacity: 0.9;
 }
 
 .rdash__tableWrap {
   overflow: auto;
+  border-radius: 12px;
 }
 
 .rdash__table {
@@ -128,7 +216,8 @@
   td {
     text-align: left;
     padding: 10px 8px;
-    border-bottom: 1px solid rgba(14, 32, 52, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
   }
 
   th {
@@ -136,5 +225,43 @@
     opacity: 0.7;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  tbody tr:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.rdash__mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  opacity: 0.92;
+}
+
+.rdash__empty {
+  opacity: 0.75;
+}
+
+/* Loading Spinner */
+
+.rdash__state--loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rdash__spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(21, 183, 232, 0.25);
+  border-top-color: rgba(21, 183, 232, 0.95);
+  animation: rdash-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes rdash-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
