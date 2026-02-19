@@ -1,8 +1,8 @@
-// Navbar.jsx
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import "./Navbar.scss";
 import Container from "../Container/Container";
+import { track } from "../../utils/ga4";
 
 import logo from "../../assets/images/desktop-logo.png";
 
@@ -28,7 +28,10 @@ export default function Navbar() {
           <a
             className="nav__logo"
             href="#home"
-            onClick={close}
+            onClick={() => {
+              track("nav_click", { nav: "logo", destination: "home" });
+              close();
+            }}
             aria-label="RD DigiTech Home"
           >
             <img src={logo} alt="RD DigiTech logo" />
@@ -37,12 +40,27 @@ export default function Navbar() {
           {/* Desktop */}
           <nav className="nav__links" aria-label="Primary">
             {NAV.map((item) => (
-              <a key={item.href} href={item.href}>
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() =>
+                  track("nav_click", {
+                    nav: "desktop",
+                    destination: item.href.replace("#", ""),
+                  })
+                }
+              >
                 {item.label}
               </a>
             ))}
 
-            <a className="nav__cta" href="#contact">
+            <a
+              className="nav__cta"
+              href="#contact"
+              onClick={() =>
+                track("nav_click", { nav: "desktop", destination: "contact" })
+              }
+            >
               Contact
             </a>
           </nav>
@@ -51,7 +69,11 @@ export default function Navbar() {
           <button
             type="button"
             className="nav__burger"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => {
+              const next = !open;
+              setOpen(next);
+              track("nav_menu_toggle", { nav: "mobile", open: next });
+            }}
             aria-label="Toggle menu"
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -71,13 +93,32 @@ export default function Navbar() {
           <ul className="nav__mobile-list">
             {NAV.map((item) => (
               <li key={item.href}>
-                <a href={item.href} onClick={close}>
+                <a
+                  href={item.href}
+                  onClick={() => {
+                    track("nav_click", {
+                      nav: "mobile",
+                      destination: item.href.replace("#", ""),
+                    });
+                    close();
+                  }}
+                >
                   {item.label}
                 </a>
               </li>
             ))}
             <li>
-              <a className="nav__mobile-cta" href="#contact" onClick={close}>
+              <a
+                className="nav__mobile-cta"
+                href="#contact"
+                onClick={() => {
+                  track("nav_click", {
+                    nav: "mobile",
+                    destination: "contact",
+                  });
+                  close();
+                }}
+              >
                 Contact
               </a>
             </li>

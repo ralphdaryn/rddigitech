@@ -1,6 +1,7 @@
 import "./Services.scss";
 import Container from "../../components/Container/Container";
 import { useEffect, useState } from "react";
+import { track } from "../../utils/ga4";
 
 // ✅ Step images
 import step1 from "../../assets/images/step1.png";
@@ -60,7 +61,11 @@ const StepIconNotify = (props) => (
 export default function Services() {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const openModal = (img) => setSelectedImage(img);
+  const openModal = (img, stepNum) => {
+    track("process_step_preview", { section: "services", step: stepNum });
+    setSelectedImage(img);
+  };
+
   const closeModal = () => setSelectedImage(null);
 
   useEffect(() => {
@@ -178,10 +183,10 @@ export default function Services() {
                 src={step1}
                 alt="Step 1"
                 className="services__stepImg"
-                onClick={() => openModal(step1)}
+                onClick={() => openModal(step1, 1)}
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => e.key === "Enter" && openModal(step1)}
+                onKeyDown={(e) => e.key === "Enter" && openModal(step1, 1)}
               />
             </li>
 
@@ -200,10 +205,10 @@ export default function Services() {
                 src={step2}
                 alt="Step 2"
                 className="services__stepImg"
-                onClick={() => openModal(step2)}
+                onClick={() => openModal(step2, 2)}
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => e.key === "Enter" && openModal(step2)}
+                onKeyDown={(e) => e.key === "Enter" && openModal(step2, 2)}
               />
             </li>
 
@@ -222,10 +227,10 @@ export default function Services() {
                 src={step3}
                 alt="Step 3"
                 className="services__stepImg"
-                onClick={() => openModal(step3)}
+                onClick={() => openModal(step3, 3)}
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => e.key === "Enter" && openModal(step3)}
+                onKeyDown={(e) => e.key === "Enter" && openModal(step3, 3)}
               />
             </li>
           </ol>
@@ -236,7 +241,14 @@ export default function Services() {
           <p className="services__ctaText">
             Not sure where to start? I’ll recommend the right setup.
           </p>
-          <a className="services__btn" href="#contact">
+
+          <a
+            className="services__btn"
+            href="#contact"
+            onClick={() =>
+              track("cta_click", { section: "services", cta: "get_started" })
+            }
+          >
             Get started
           </a>
         </div>

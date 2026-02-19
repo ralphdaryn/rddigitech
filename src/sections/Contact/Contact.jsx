@@ -1,7 +1,7 @@
-// Contact.jsx
 import { useState } from "react";
 import "./Contact.scss";
 import Container from "../../components/Container/Container";
+import { track } from "../../utils/ga4";
 
 export default function Contact() {
   const [status, setStatus] = useState({ type: "", msg: "" });
@@ -9,6 +9,9 @@ export default function Contact() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    track("contact_submit_attempt", { section: "contact" });
+
     setStatus({ type: "", msg: "" });
     setLoading(true);
 
@@ -28,7 +31,6 @@ export default function Contact() {
         body: JSON.stringify(payload),
       });
 
-      // ✅ Read raw response first (works even if server crashes)
       const text = await res.text();
       let data = {};
       try {
@@ -47,12 +49,16 @@ export default function Contact() {
         throw new Error(data?.error || "Failed to send message.");
       }
 
+      track("contact_submit_success", { section: "contact" });
+
       setStatus({
         type: "success",
         msg: "Your message was sent successfully!",
       });
       form.reset();
     } catch (err) {
+      track("contact_submit_error", { section: "contact" });
+
       setStatus({
         type: "error",
         msg: err?.message || "Something went wrong. Please try again.",
@@ -69,8 +75,8 @@ export default function Contact() {
           <p className="contact__eyebrow">CONTACT</p>
           <h2 className="contact__title">Let’s work together</h2>
           <p className="contact__sub">
-            Have a project in mind? <br></br>Send a message and I’ll follow up with
-            recommendations.
+            Have a project in mind? <br></br>Send a message and I’ll follow up
+            with recommendations.
           </p>
         </header>
 

@@ -1,6 +1,7 @@
 // Projects.jsx
 import "./Projects.scss";
 import Container from "../../components/Container/Container";
+import { track } from "../../utils/ga4";
 
 import stepByStepImg from "../../assets/images/stepbystepclub.png";
 import rikakumaImg from "../../assets/images/rikakuma.png";
@@ -50,6 +51,13 @@ export default function Projects() {
               href={p.href}
               target="_blank"
               rel="noreferrer"
+              onClick={() =>
+                track("portfolio_click", {
+                  section: "projects",
+                  project: p.title,
+                  url: p.href,
+                })
+              }
             >
               <div className="projects__media" aria-hidden="true">
                 <img className="projects__img" src={p.image} alt="" />
@@ -74,7 +82,13 @@ export default function Projects() {
           <p className="projects__ctaText">
             Want something like this for your business?
           </p>
-          <a className="projects__btn" href="#contact">
+          <a
+            className="projects__btn"
+            href="#contact"
+            onClick={() =>
+              track("cta_click", { section: "projects", cta: "start_project" })
+            }
+          >
             Start a project
           </a>
         </div>

@@ -1,6 +1,7 @@
 import "./Hero.scss";
 import Container from "../../components/Container/Container";
 import heroImg from "../../assets/images/hero.png";
+import { track } from "../../utils/ga4";
 
 export default function Hero() {
   return (
@@ -22,15 +23,29 @@ export default function Hero() {
           <h1 className="hero__title">Websites. Analytics. Automation.</h1>
 
           <p className="hero__sub">
-        We build fast, modern websites and simple tools that turn visitors into leads — and show you what’s actually working.
+            We build fast, modern websites and simple tools that turn visitors
+            into leads — and show you what’s actually working.
           </p>
         </div>
 
         <div className="hero__ctas">
-          <a className="hero__btn hero__btn--primary" href="#contact">
+          <a
+            className="hero__btn hero__btn--primary"
+            href="#contact"
+            onClick={() =>
+              track("cta_click", { section: "hero", cta: "start_project" })
+            }
+          >
             Start a project
           </a>
-          <a className="hero__btn hero__btn--ghost" href="#work">
+
+          <a
+            className="hero__btn hero__btn--ghost"
+            href="#work"
+            onClick={() =>
+              track("cta_click", { section: "hero", cta: "view_work" })
+            }
+          >
             View work
           </a>
         </div>
