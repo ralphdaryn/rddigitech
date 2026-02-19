@@ -1,4 +1,4 @@
-// App.jsx
+// src/App.jsx
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 

@@ -3,68 +3,32 @@ import { useEffect, useMemo, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Dashboard.scss";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
-const CLIENT_KEY = "rddigitech";
+const API_BASE = import.meta.env.VITE_API_BASE_URL; // https://rd-dashboard-api.onrender.com
+const DASHBOARD_PATH = "/api/dashboard/rddigitech/ga4Results";
 
 async function fetchGa4Results({ token, days }) {
-  const url = `${API_BASE}/ga4Results?client=${encodeURIComponent(
-    CLIENT_KEY
-  )}&days=${encodeURIComponent(days)}`;
+  if (!API_BASE) throw new Error("Missing VITE_API_BASE_URL");
+
+  const url = `${API_BASE}${DASHBOARD_PATH}?days=${encodeURIComponent(days)}`;
 
   const res = await fetch(url, {
     method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!res.ok) {
-    const text = await res.text();
-
-    // POST fallback (if backend expects JSON body)
-    if ([404, 405].includes(res.status)) {
-      const res2 = await fetch(`${API_BASE}/ga4Results`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ client: CLIENT_KEY, days }),
-      });
-
-      const text2 = await res2.text();
-      let data2 = {};
-
-      try {
-        data2 = text2 ? JSON.parse(text2) : {};
-      } catch {
-        data2 = { error: text2 || "Invalid JSON" };
-      }
-
-      if (!res2.ok) {
-        throw new Error(data2?.error || `HTTP ${res2.status}`);
-      }
-
-      return data2;
-    }
-
-    let data = {};
-    try {
-      data = text ? JSON.parse(text) : {};
-    } catch {
-      data = { error: text || "Invalid JSON" };
-    }
-
-    throw new Error(data?.error || `HTTP ${res.status}`);
-  }
-
   const text = await res.text();
-
+  let data = {};
   try {
-    return text ? JSON.parse(text) : {};
+    data = text ? JSON.parse(text) : {};
   } catch {
-    throw new Error("API returned invalid JSON.");
+    throw new Error(text || "API returned invalid JSON.");
   }
+
+  if (!res.ok) {
+    throw new Error(data?.error || data?.message || `HTTP ${res.status}`);
+  }
+
+  return data;
 }
 
 export default function Dashboard() {
@@ -77,16 +41,15 @@ export default function Dashboard() {
 
   const kpis = useMemo(() => {
     if (!data) return [];
-
     return [
-      { label: "Users (30d)", value: data.users30d ?? 0 },
-      { label: "New Users (30d)", value: data.newUsers30d ?? 0 },
+      { label: `Users (${days}d)`, value: data.users30d ?? 0 },
+      { label: `New Users (${days}d)`, value: data.newUsers30d ?? 0 },
       { label: "Avg Engagement", value: data.avgEngagementTime ?? "—" },
       { label: "Top Source", value: data.topTrafficSource ?? "—" },
       { label: "Leads", value: data.contactSubmits ?? 0 },
       { label: "Booking Clicks", value: data.bookingClicks ?? 0 },
     ];
-  }, [data]);
+  }, [data, days]);
 
   useEffect(() => {
     let mounted = true;
@@ -99,22 +62,15 @@ export default function Dashboard() {
         const token = await getAccessTokenSilently();
         const results = await fetchGa4Results({ token, days });
 
-        if (mounted) {
-          setData(results);
-        }
+        if (mounted) setData(results);
       } catch (e) {
-        if (mounted) {
-          setError(e?.message || "Failed to load GA4 results.");
-        }
+        if (mounted) setError(e?.message || "Failed to load GA4 results.");
       } finally {
-        if (mounted) {
-          setLoading(false);
-        }
+        if (mounted) setLoading(false);
       }
     }
 
     load();
-
     return () => {
       mounted = false;
     };
@@ -149,9 +105,7 @@ export default function Dashboard() {
             className="rdash__logout"
             type="button"
             onClick={() =>
-              logout({
-                logoutParams: { returnTo: window.location.origin },
-              })
+              logout({ logoutParams: { returnTo: window.location.origin } })
             }
           >
             Log out
@@ -176,7 +130,6 @@ export default function Dashboard() {
           <section className="rdash__grid">
             <section className="rdash__panel">
               <h2 className="rdash__panelTitle">Top Pages</h2>
-
               <div className="rdash__tableWrap">
                 <table className="rdash__table">
                   <thead>
@@ -192,7 +145,6 @@ export default function Dashboard() {
                         <td>{p.views}</td>
                       </tr>
                     ))}
-
                     {!data.topPages?.length && (
                       <tr>
                         <td colSpan="2">No page data yet.</td>
@@ -205,7 +157,6 @@ export default function Dashboard() {
 
             <section className="rdash__panel">
               <h2 className="rdash__panelTitle">Top Sources</h2>
-
               <div className="rdash__tableWrap">
                 <table className="rdash__table">
                   <thead>
@@ -221,7 +172,6 @@ export default function Dashboard() {
                         <td>{s.sessions}</td>
                       </tr>
                     ))}
-
                     {!data.topSources?.length && (
                       <tr>
                         <td colSpan="2">No source data yet.</td>

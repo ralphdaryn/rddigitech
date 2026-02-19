@@ -13,19 +13,19 @@ const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Auth0Provider
-      domain={domain}
-      clientId={clientId}
-      authorizationParams={{
-        redirect_uri: window.location.origin, // ✅ never localhost in production
-        audience,
-      }}
-      cacheLocation="localstorage"
-      useRefreshTokens
-    >
-      <BrowserRouter>
+    <BrowserRouter>
+      <Auth0Provider
+        domain={domain}
+        clientId={clientId}
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+          audience,
+        }}
+        cacheLocation="localstorage"
+        useRefreshTokens
+      >
         <App />
-      </BrowserRouter>
-    </Auth0Provider>
+      </Auth0Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
