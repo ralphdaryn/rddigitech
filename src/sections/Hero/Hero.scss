@@ -114,6 +114,8 @@
     line-height: 1.6;
     opacity: 0.92;
     margin: 0 auto;
+    background: rgba(14, 32, 52, 0.4);
+    border-radius: 8px;
 
     @media (min-width: 520px) {
       font-size: 18px;
