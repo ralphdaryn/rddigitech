@@ -14,21 +14,21 @@ export default function Reviews() {
     () => [
       {
         quote:
-          "“Everything was explained clearly and the process was stress-free. The site looks professional and works great on mobile.”",
+          "“Ralph made everything easy from start to finish. He explained things clearly, the whole process felt easy, and the website has been a huge help for our business. Booking, schedules, and the contact form all work seamlessly, and the tracking features let us better understand our visitors.”",
         author: "— Step by Step Club",
       },
       {
         quote:
-          "“Fast turnaround and great communication. I finally understand how people are finding my website.”",
+          "“I’m so happy with how the store turned out. Everything feels clean and easy to navigate — from the product listings to checkout. It’s been perfect for selling my custom designs online.”",
         author: "— Rikakuma",
       },
       {
         quote:
-          "“Ralph handled everything from design to setup. I didn’t have to worry about anything.”",
+          "“Working with Ralph was effortless. He handled the design and technical setup, and the website beautifully showcases our photo galleries while keeping client inquiries simple. I also love being able to see our traffic and visitor activity through the analytics.”",
         author: "— Ksnap Studio",
       },
     ],
-    []
+    [],
   );
 
   // Track which card is most visible (active) ✅ FIXED
@@ -61,7 +61,7 @@ export default function Reviews() {
 
         if (bestRatio > 0) setActive(bestIndex);
       },
-      { root: track, threshold: [0.25, 0.5, 0.6, 0.75, 0.9] }
+      { root: track, threshold: [0.25, 0.5, 0.6, 0.75, 0.9] },
     );
 
     cards.forEach((card) => observer.observe(card));
