@@ -1,0 +1,140 @@
+.rdash {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.rdash__header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.rdash__title {
+  margin: 0;
+  font-size: 28px;
+}
+
+.rdash__sub {
+  margin: 6px 0 0;
+  opacity: 0.75;
+}
+
+.rdash__controls {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.rdash__label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.rdash__select {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(14, 32, 52, 0.15);
+}
+
+.rdash__logout {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(14, 32, 52, 0.15);
+  background: white;
+  cursor: pointer;
+}
+
+.rdash__state {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(14, 32, 52, 0.05);
+}
+
+.rdash__error {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+}
+
+.rdash__kpis {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 18px 0;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.rdash__kpi {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(14, 32, 52, 0.12);
+  background: #fff;
+}
+
+.rdash__kpiLabel {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.rdash__kpiValue {
+  margin-top: 6px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.rdash__grid {
+  display: grid;
+  gap: 12px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.rdash__panel {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(14, 32, 52, 0.12);
+  background: #fff;
+}
+
+.rdash__panelTitle {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.rdash__tableWrap {
+  overflow: auto;
+}
+
+.rdash__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  th,
+  td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid rgba(14, 32, 52, 0.08);
+  }
+
+  th {
+    font-size: 12px;
+    opacity: 0.7;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
